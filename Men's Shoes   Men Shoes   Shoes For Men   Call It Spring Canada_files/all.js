@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){e(".disclamer-toggle").on("click",function(){e(".sale-disclamer").slideToggle("slow")})}),jQuery(document).ready(function(e){var t=e(".adl-container-blog").find("img");e.each(t,function(){$this=e(this);var t=$this.attr("alt"),i="blog.callitspring.com"==t||"instagram"==t;i&&$this.parent().attr("target","_blank")})});

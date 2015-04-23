@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>Men's Shoes | Men Shoes | Shoes For Men | Call It Spring Canada</title>
+
+<table>
+  <tr>
+    <td style="width:40%">
+									<div class="product">
+										<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36894130-papageorge/28"><img src="./Men's Shoes   Men Shoes   Shoes For Men   Call It Spring Canada_files/BALLATO_18_RG_160.JPG" border="0" width="160" height="160" alt="BALLATO"></a>
+											<div class="productName"><a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36894130-papageorge/28">BALLATO</a></div>
+										<div class="price">
+															<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36894130-papageorge/28">$54.98</a> 
+										</div>
+										<div>
+											<button type="button" onclick="addItem('84166293','211','84166226-18');">Add to cart</button>
+										</div>
+										
+									</div>	
+	</td>
+    <td>
+							<div class="product">
+										<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36894130-papageorge/96"><img src="./Men's Shoes   Men Shoes   Shoes For Men   Call It Spring Canada_files/BALLATO_97_RG_160.JPG" border="0" width="160" height="160" alt="BALLATO"></a>
+									<div class="productName"><a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36894130-papageorge/96">BALLATO</a></div>
+										<div class="price">
+															<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36894130-papageorge/96">$39.98</a> 
+										</div>
+									</div>	
+										<div>
+											<button type="button" onclick="addItem('84166381','211','84166226-97');">Add to cart</button>
+										</div>
+									
+	</td> 
+  </tr>
+  <tr>
+    <td>
+									<div class="product">
+										<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36420293-suelita/17"><img src="./Men's Shoes   Men Shoes   Shoes For Men   Call It Spring Canada_files/CEMBURA_70_RG_160.JPG" border="0" width="160" height="160" alt="SUELITA"></a>
+											<div class="productName"><a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36420293-suelita/17">CEMBURA</a></div>
+										<div class="price">
+															<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36420293-suelita/17">$49.98</a> 
+										</div>
+									</div>
+																			<div>
+											<button type="button" onclick="addItem('84164490','124','84164482-70');">Add to cart</button>
+										</div>
+
+
+	</td>
+    <td>
+									<div class="product">
+										<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36420293-suelita/28"><img src="./Men's Shoes   Men Shoes   Shoes For Men   Call It Spring Canada_files/CEMBURA_96_RG_160.JPG" border="0" width="160" height="160" alt="SUELITA"></a>
+										<div class="productName"><a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36420293-suelita/28">CEMBURA</a></div>
+										
+										<div class="price">
+															<a href="http://www.callitspring.com/ca-eng/men/shoes/sneakers/36420293-suelita/28">$49.98</a> 
+										</div>
+									</div>
+										<div>
+											<button type="button" onclick="addItem('84164650','122','84164482-70');">Add to cart</button>
+										</div>
+
+
+	</td> 
+  </tr>
+</table>
+<br>
+										<div align="center">
+										<form id="addToCartForm" class="add_to_cart_form" 
+											action="http://local.aldoshoes.com:9001/ca/en/addToCartTest" method="post">
+											<button type="button" onclick="submitJson();">Sent to Aldo</button>
+											<input type="hidden" id="products" name="products" value="">
+										</form>
+										</div>
+
+</div>
+
+		</div>
+		
+</body></html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="jquery.cookie.js"></script>
+<script>
+   var request={}
+   var itemList = [];
+   var itemLists={}
+   itemLists["itemList"]=itemList;
+   request["products"]=itemLists;
+   var jsonString;
+   
+function addItem(code,categoryCode,styleCode){
+
+var result = $.grep(itemList, 
+	function(e){ 
+		return e.productCode === code; 
+	});
+
+    indexOf = find(code,itemList);
+    if (indexOf < 0)	{
+        item = {}
+        item ["productCode"] = code;
+        item ["productCategoryCode"] = categoryCode;
+		item["productStyleCode"]=styleCode;
+		item["qty"]=1;
+        itemList.push(item);
+	}else {
+		itemList[indexOf].qty++;
+	}
+}	  
+function find(code, itemList) {
+  var i = 0;
+  var len = itemList.length;
+  for (i = 0; i < len; i++) {
+    if (code === itemList[i].productCode) {
+      return i;
+    }
+  }
+  return -1;
+};	
+
+function submitForm(){
+createJason();
+$('#products').val(jsonString);
+$('#addToCartForm').submit();
+}
+
+function createJason(){
+	jsonString = JSON.stringify(request);
+	console.log(jsonString);
+	//alert(jsonString);
+}
+function submitJson() {
+createJason();
+
+var xhr;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xhr=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xhr=new ActiveXObject("Microsoft.XMLHTTP");
+  }	
+  //xhr.open("POST", "http://local.aldoshoes.com:9001/ca/en/addToCartTest", true);
+  //xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  //xhr.send(jsonString);
+ 
+    $.ajax({
+       url:  'http://local.aldoshoes.com:9001/ca/en/addToCartTest',
+       type: 'POST',
+       contentType:'application/json; charset=utf-8',
+       data: jsonString,
+	   dataType:"json",
+	   crossDomain: true,
+	   success: function(data){
+		process(data);
+	   },
+});
+}
+
+function process(data) {
+//alert(data.cartData);
+//window.location.replace("http://local.aldoshoes.com:9001/ca/en");
+$.cookie('caAldo-cart', 'b42882761dba979e66597976710a9ef09c300c81', { domain: 'local.aldoshoes.com', path: '/',expires: 7 });
+alert($.cookie('caAldo-cart'));
+}
+
+
+</script>

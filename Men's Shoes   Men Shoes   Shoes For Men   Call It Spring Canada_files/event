@@ -1,0 +1,5 @@
+(function() {var qss="&cb="+Math.floor(99999999999*Math.random());try{qss+="&ref="+encodeURIComponent(document.referrer)}catch(e$$12){}try{qss+="&sc_r="+encodeURIComponent(screen.width+"x"+screen.height)}catch(e$$13){}try{qss+="&sc_d="+encodeURIComponent(screen.colorDepth)}catch(e$$14){}
+var callDis=function(c,d){var b=("https:"==document.location.protocol?"https:":"http:")+"//"+d+"/dis/dis.aspx",a=document.createElement("iframe");a.width=a.height="0";a.style.display="none";a.src=(b+"?p="+c+qss).substring(0,2E3);(b=document.getElementById("criteoTagsContainer"))?b.appendChild(a):criteo_q.push({event:"appendTag",element:a})};
+
+callDis(18761, 'dis.us.criteo.com');
+})();/*-->*/
